@@ -4,3 +4,7 @@
 and powerful search, powered by `themoviedb` API.** Built with speed and
 efficiency in mind, it leverages the lightweight power of Preact and
 performance-boosting Million to give you a smooth and responsive experience.
+
+## Links
+
+- GitHub repository: [link](https://github.com/binhtran432k/movie-preact)
