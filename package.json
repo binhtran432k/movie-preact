@@ -1,6 +1,7 @@
 {
   "name": "movie-app",
-  "private": "true",
+  "private": true,
+  "author": "Binh Duc Tran <binhtran432k@gmail.com> (binhtran432k.com)",
   "workspaces": [
     "apps/*"
   ]
