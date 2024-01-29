@@ -4,3 +4,7 @@ pre-commit:
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+commit-msg:
+  commands:
+    commitlint:
+      run: npx --no -- commitlint --edit $1
