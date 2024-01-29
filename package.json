@@ -6,7 +6,8 @@
   "scripts": {
     "dev:client": "bun run --cwd apps/client dev",
     "check": "biome check .",
-    "ci": "biome ci ."
+    "ci": "biome ci .",
+    "lint:commit": "commitlint"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
