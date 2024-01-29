@@ -21,7 +21,7 @@ performance.
 ## Technology Stack
 
 - Preact: A blazing-fast, lightweight alternative to React
-- Million: Supercharge your Preact app with significant performance gains
+- Million: Supercharge Preact app with significant performance gains
 - Tailwind CSS: Rapidly build beautiful interfaces with utility-first classes
 - Bun: A fast and secure JavaScript runtime for development and deployment
 - Biome: Next-generation formatting and linting for a clean and consistent codebase
