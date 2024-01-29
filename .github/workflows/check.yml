@@ -1,8 +1,10 @@
 name: Check using biome with bun
 on:
   push:
+    paths: [apps/**]
     branches: [dev, main]
   pull_request:
+    paths: [apps/**]
     branches: [dev, main]
 jobs:
   test:
