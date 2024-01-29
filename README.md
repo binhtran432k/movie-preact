@@ -25,6 +25,7 @@ performance.
 - Tailwind CSS: Rapidly build beautiful interfaces with utility-first classes
 - Bun: A fast and secure JavaScript runtime for development and deployment
 - Biome: Next-generation formatting and linting for a clean and consistent codebase
+- Lefthook: Manages pre-commit hooks for automated checks and formatting
 
 ## Getting Started
 
