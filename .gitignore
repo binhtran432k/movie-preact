@@ -2,3 +2,7 @@ node_modules/
 
 # HACK: Ignore temporary vite config timestamp
 vite.config.*.timestamp*
+
+# Environment files
+.env*
+!.env.example
