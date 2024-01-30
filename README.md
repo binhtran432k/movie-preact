@@ -33,6 +33,7 @@ within your Preact applications.
 - Biome: Next-generation formatting and linting for a clean and consistent codebase
 - Lefthook: Manages pre-commit hooks for automated checks and formatting
 - Axios: A popular HTTP client library for efficient API communication
+- Commitlint: Enforces consistent commit message formatting
 
 ## Getting Started
 
