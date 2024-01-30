@@ -28,7 +28,8 @@ within your Preact applications.
 - Preact: A blazing-fast, lightweight alternative to React
 - Million: Supercharge Preact app with significant performance gains
 - Tailwind CSS: Rapidly build beautiful interfaces with utility-first classes
-- Bun: A fast and secure JavaScript runtime for development and deployment
+- Bun: A fast and secure JavaScript runtime for development and deployment (and
+  Bun Test for unit testing)
 - Biome: Next-generation formatting and linting for a clean and consistent codebase
 - Lefthook: Manages pre-commit hooks for automated checks and formatting
 - Axios: A popular HTTP client library for efficient API communication
