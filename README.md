@@ -12,6 +12,11 @@ and Million, aiming for a lightning-fast app with minimal bundle size. The
 results? A smooth and responsive experience that pushes the boundaries of
 performance.
 
+**API Integration Deep Dive:** This project takes you on a deep dive into
+integrating the `themoviedb` API using `axios`, a popular HTTP client library,
+to demonstrate best practices for leveraging powerful third-party resources
+within your Preact applications.
+
 ## Features
 
 - Clean and intuitive interface powered by Tailwind CSS
@@ -26,6 +31,7 @@ performance.
 - Bun: A fast and secure JavaScript runtime for development and deployment
 - Biome: Next-generation formatting and linting for a clean and consistent codebase
 - Lefthook: Manages pre-commit hooks for automated checks and formatting
+- Axios: A popular HTTP client library for efficient API communication
 
 ## Getting Started
 
@@ -35,3 +41,4 @@ performance.
 ## Links
 
 - GitHub repository: [link](https://github.com/binhtran432k/movie-preact)
+- `themoviedb` API: [link](https://developer.themoviedb.org/docs/getting-started)
