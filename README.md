@@ -34,6 +34,7 @@ within your Preact applications.
 - Lefthook: Manages pre-commit hooks for automated checks and formatting
 - Axios: A popular HTTP client library for efficient API communication
 - Commitlint: Enforces consistent commit message formatting
+- Wouter: A minimalist and efficient router for Preact
 
 ## Getting Started
 
