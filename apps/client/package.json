@@ -8,9 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.1",
     "axios": "^1.6.7",
     "million": "latest",
-    "preact": "^10.19.3"
+    "preact": "^10.19.3",
+    "wouter": "^2.12.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.7.0",
