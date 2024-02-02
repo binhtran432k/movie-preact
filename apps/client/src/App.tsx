@@ -1,8 +1,8 @@
 import { BROWSE_PATH, SEARCH_PATH } from "@/constants/paths";
-import { useHashLocation } from "@/hooks/use-hash-location";
 import Browse from "@/pages/browse/Browse";
 import Search from "@/pages/search/Search";
 import { Route, Router } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 
 export function App() {
   return (
