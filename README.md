@@ -35,6 +35,7 @@ within your Preact applications.
 - Axios: A popular HTTP client library for efficient API communication
 - Commitlint: Enforces consistent commit message formatting
 - Wouter: A minimalist and efficient router for Preact
+- Clsx: A utility for constructing className strings in a dynamic and conditional manner.
 
 ## Getting Started
 
