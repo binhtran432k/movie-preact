@@ -13,7 +13,7 @@
     "clsx": "^2.1.0",
     "million": "latest",
     "preact": "^10.19.3",
-    "wouter": "^2.12.1"
+    "wouter": "next"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.7.0",
