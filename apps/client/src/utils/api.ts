@@ -9,8 +9,6 @@ export const api = axios.create({
   },
 });
 
-export function getImageUrlFromPath(path?: string) {
-  if (path) {
-    return `${API_URL_IMAGE}${path}`;
-  }
+export function getImageUrlFromPath(path: string) {
+  return `${API_URL_IMAGE}${path}`;
 }
