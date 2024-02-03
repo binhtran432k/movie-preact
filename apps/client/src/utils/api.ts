@@ -1,4 +1,4 @@
-import { API_URL_BASE } from "@/constants/paths";
+import { API_URL_BASE, API_URL_IMAGE } from "@/constants/paths";
 import axios from "axios";
 
 export const api = axios.create({
@@ -8,3 +8,9 @@ export const api = axios.create({
     Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
   },
 });
+
+export function getImageUrlFromPath(path?: string) {
+  if (path) {
+    return `${API_URL_IMAGE}${path}`;
+  }
+}
