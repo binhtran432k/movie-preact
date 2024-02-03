@@ -1,49 +1,39 @@
-import { getDiscoverMovies } from "@/services/browseService";
 import { getImageUrlFromPath } from "@/utils/api";
-import { Movie } from "@/utils/definitions";
 import { truncateString } from "@/utils/string";
-import { useEffect, useState } from "preact/hooks";
+import { memo } from "preact/compat";
 
-const BACK_DROP_IMAGE = "linear-gradient(#0000001f, #0000001f)";
+const Banner = memo(
+  ({
+    backdrop_path,
+    name,
+    overview,
+  }: {
+    backdrop_path?: string;
+    name?: string;
+    overview?: string;
+  }) => {
+    const imageUrl = getImageUrlFromPath(backdrop_path);
 
-export function Banner() {
-  const [movie, setMovie] = useState<Movie>();
-  const imageUrl = getImageUrlFromPath(movie?.backdrop_path);
+    return (
+      <div
+        className="h-[18rem] bg-[image:var(--bg-image)] bg-[position:center_30%] bg-cover flex items-end"
+        style={{
+          "--bg-image":
+            imageUrl &&
+            `linear-gradient(#0000001f, #0000001f), url('${imageUrl}')`,
+        }}
+      >
+        {name && getBannerBody(name, overview)}
+      </div>
+    );
+  },
+);
 
-  useEffect(() => {
-    getDiscoverMovies()
-      .then((res) => {
-        const validMovies = res.data.results.filter(
-          (movie) => movie.backdrop_path && movie.name,
-        );
-        setMovie(getRandomMovieFromList(validMovies));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-  return (
-    <div
-      className="h-[18rem] bg-[image:var(--bg-image)] bg-[position:center_30%] bg-cover flex items-end"
-      style={{
-        "--bg-image": `${BACK_DROP_IMAGE}, url('${imageUrl}')`,
-      }}
-    >
-      {movie && getBannerBody(movie)}
-    </div>
-  );
-}
-
-function getRandomMovieFromList(movies: Movie[]) {
-  return movies[Math.floor(Math.random() * movies.length - 1)];
-}
-
-function getBannerBody(movie: Movie) {
+function getBannerBody(name: string, overview?: string) {
   return (
     <div className="container mx-auto pb-12 px-4">
       <div className="max-w-[20rem]">
-        <h2 className="text-3xl font-bold mb-7">{movie.name}</h2>
+        <h2 className="text-3xl font-bold mb-7">{name}</h2>
         <div className="flex gap-x-2 text-sm font-bold mb-1">
           <button
             type="button"
@@ -59,9 +49,11 @@ function getBannerBody(movie: Movie) {
           </button>
         </div>
         <p className="text-xs font-bold">
-          {truncateString(movie.overview, 150)}
+          {overview && truncateString(overview, 150)}
         </p>
       </div>
     </div>
   );
 }
+
+export default Banner;
