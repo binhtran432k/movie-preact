@@ -7,6 +7,6 @@ export interface Page<T> {
 
 export interface Movie {
   backdrop_path?: string;
-  name: string;
-  overview: string;
+  name?: string;
+  overview?: string;
 }
