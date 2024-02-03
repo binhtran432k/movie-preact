@@ -5,3 +5,7 @@
 :root {
   @apply bg-black text-gray-50;
 }
+
+.simplebar-scrollbar:before {
+  @apply bg-gray-300;
+}
