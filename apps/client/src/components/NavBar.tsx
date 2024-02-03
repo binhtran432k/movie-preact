@@ -1,4 +1,4 @@
-import { BROWSE_PATH, SEARCH_PATH } from "@/constants/paths";
+import { PATH_BROWSE, PATH_SEARCH } from "@/constants/paths";
 import { useScrollTop } from "@/hooks/use-scroll-top";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import clsx from "clsx/lite";
@@ -18,11 +18,11 @@ const NavBar = memo(() => {
       )}
     >
       <h1 className="font-bold text-lg text-red-500 hover:text-red-400">
-        <Link href={BROWSE_PATH} id="logo">
+        <Link href={PATH_BROWSE} id="logo">
           Movie App
         </Link>
       </h1>
-      <Link href={SEARCH_PATH}>
+      <Link href={PATH_SEARCH}>
         <MagnifyingGlassIcon className="h-6 text-gray-300 hover:text-gray-200" />
       </Link>
     </div>

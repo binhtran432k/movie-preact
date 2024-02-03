@@ -1,2 +1,4 @@
-export const BROWSE_PATH = "/";
-export const SEARCH_PATH = "/search";
+export const PATH_BROWSE = "/";
+export const PATH_SEARCH = "/search";
+
+export const API_URL_BASE = "https://api.themoviedb.org/3";
