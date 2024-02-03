@@ -14,12 +14,16 @@ export default function Poster({
 }) {
   const imageUrl = getImageUrlFromPath(imagePath);
   return (
-    <button type="button" onClick={() => onClick(Boolean(active))}>
+    <button
+      type="button"
+      onClick={() => onClick(Boolean(active))}
+      className="shrink-0"
+    >
       <img
         src={imageUrl}
         alt={alt}
         className={clsx(
-          "min-w-[8rem] hover:scale-110 transition-transform",
+          "h-full hover:scale-110 transition-transform",
           active && "brightness-50",
         )}
       />
