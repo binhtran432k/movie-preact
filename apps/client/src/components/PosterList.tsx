@@ -13,8 +13,8 @@ export default function PosterList({
   }, []);
 
   return (
-    <SimpleBar>
-      <div className="container mx-auto px-3 pt-8 pb-6 flex gap-2 h-[16rem]">
+    <SimpleBar className="container mx-auto">
+      <div className="px-3 pt-8 pb-6 flex gap-2 h-[16rem]">
         {movies.map(
           (movie, i) =>
             movie.poster_path && (
