@@ -1,7 +1,7 @@
 import { getImageUrlFromPath } from "@/utils/api";
 import clsx from "clsx/lite";
 
-export default function Poster({
+export default function MovieItem({
   imagePath,
   alt,
   active,

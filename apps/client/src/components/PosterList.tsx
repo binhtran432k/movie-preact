@@ -1,7 +1,7 @@
 import { Movie } from "@/utils/definitions";
 import { useCallback } from "preact/hooks";
 import SimpleBar from "simplebar-react";
-import Poster from "./Poster";
+import MovieItem from "./MovieItem";
 
 export default function PosterList({
   movies,
@@ -18,7 +18,7 @@ export default function PosterList({
         {movies.map(
           (movie, i) =>
             movie.poster_path && (
-              <Poster
+              <MovieItem
                 key={movie.id}
                 imagePath={movie.poster_path}
                 alt={movie.name ?? "Movie Name"}
