@@ -36,7 +36,6 @@ within your Preact applications.
 - Commitlint: Enforces consistent commit message formatting
 - Wouter: A minimalist and efficient router for Preact
 - Clsx: A utility for constructing className strings in a dynamic and conditional manner.
-- Simplebar: A lightweight and customizable scrollbar library for enhancing user interfaces.
 
 ## Getting Started
 

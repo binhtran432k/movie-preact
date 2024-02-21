@@ -1,5 +1,4 @@
 import { render } from "preact";
-import "simplebar-react/dist/simplebar.min.css";
 import { App } from "./App.tsx";
 import "./index.css";
 

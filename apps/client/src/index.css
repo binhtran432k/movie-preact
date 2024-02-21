@@ -2,10 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@property --color-scrollbar {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #777;
+}
+
 :root {
   @apply bg-black text-gray-50;
 }
 
-.simplebar-scrollbar:before {
-  @apply bg-gray-300;
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded;
+  background-color: var(--color-scrollbar);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  --color-scrollbar: #aaa;
+}
+
+.scrollbar-transparent {
+  --color-scrollbar: transparent;
+  transition: --color-scrollbar 500ms;
+}
+
+.scrollbar-transparent:hover {
+  --color-scrollbar: initial;
 }
