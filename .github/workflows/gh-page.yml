@@ -29,7 +29,9 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
       - name: Build page
-        run: bun run --cwd apps/client build
+        run: bun run --cwd apps/client build -- --base=./
+        env:
+          VITE_TMDB_TOKEN: ${{ secrets.VITE_TMDB_TOKEN }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
