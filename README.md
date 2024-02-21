@@ -17,6 +17,13 @@ integrating the `themoviedb` API using `axios`, a popular HTTP client library,
 to demonstrate best practices for leveraging powerful third-party resources
 within your Preact applications.
 
+**CI/CD Mastery:** We implemented CI/CD practices using Github actions,
+demonstrating how to automate workflow and optimize your development process.
+
+**Semantic Release Bonus:** By incorporating semantic-release, we ensure
+streamlined deployments, accurate versioning, and a clear changelog based on
+commit message conventions.
+
 ## Features
 
 - Clean and intuitive interface powered by Tailwind CSS
@@ -36,6 +43,7 @@ within your Preact applications.
 - Commitlint: Enforces consistent commit message formatting
 - Wouter: A minimalist and efficient router for Preact
 - Clsx: A utility for constructing className strings in a dynamic and conditional manner.
+- Semantic-release: Automates versioning and releasing based on commit messages
 
 ## Getting Started
 
