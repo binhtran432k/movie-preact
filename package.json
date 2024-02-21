@@ -1,0 +1,19 @@
+{
+  "name": "movie-app",
+  "private": true,
+  "author": "Binh Duc Tran <binhtran432k@gmail.com> (binhtran432k.com)",
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "check": "biome check .",
+    "ci": "biome ci .",
+    "lint:commit": "commitlint"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3",
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
+    "@types/bun": "^1.0.4",
+    "lefthook": "^1.6.1",
+    "semantic-release": "^23.0.2"
+  }
+}
