@@ -13,7 +13,6 @@
     "clsx": "^2.1.0",
     "million": "latest",
     "preact": "^10.19.3",
-    "simplebar-react": "^3.2.4",
     "wouter": "next"
   },
   "devDependencies": {

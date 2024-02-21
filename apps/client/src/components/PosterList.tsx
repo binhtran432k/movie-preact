@@ -1,6 +1,5 @@
 import { Movie } from "@/utils/definitions";
 import { useCallback } from "preact/hooks";
-import SimpleBar from "simplebar-react";
 import MovieItem from "./MovieItem";
 
 export default function PosterList({
@@ -13,8 +12,8 @@ export default function PosterList({
   }, []);
 
   return (
-    <SimpleBar className="container mx-auto">
-      <div className="px-3 pt-8 pb-6 flex gap-2 h-[16rem]">
+    <div className="container mx-auto">
+      <div className="scrollbar-transparent px-3 pt-8 pb-6 flex gap-2 h-[16rem] overflow-x-auto">
         {movies.map(
           (movie, i) =>
             movie.poster_path && (
@@ -28,6 +27,6 @@ export default function PosterList({
             ),
         )}
       </div>
-    </SimpleBar>
+    </div>
   );
 }
