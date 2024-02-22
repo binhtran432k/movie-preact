@@ -23,7 +23,7 @@ export default function MovieItem({
         src={imageUrl}
         alt={alt}
         className={clsx(
-          "h-full hover:scale-110 transition-transform",
+          "h-full max-w-[10rem] hover:scale-110 transition-transform",
           active && "brightness-50",
         )}
       />
