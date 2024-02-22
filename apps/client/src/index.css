@@ -5,11 +5,12 @@
 @property --color-scrollbar {
   syntax: "<color>";
   inherits: true;
-  initial-value: #777;
+  initial-value: transparent;
 }
 
 :root {
   @apply bg-black text-gray-50;
+  --color-scrollbar: #777;
 }
 
 ::-webkit-scrollbar {
@@ -35,5 +36,5 @@
 }
 
 .scrollbar-transparent:hover {
-  --color-scrollbar: initial;
+  --color-scrollbar: inherit;
 }
