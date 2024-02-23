@@ -8,11 +8,13 @@ export default function MovieItem({
   y,
   imagePath,
   alt,
+  isPoster,
 }: {
   x: number;
   y: number;
   imagePath: string;
   alt: string;
+  isPoster?: boolean;
 }) {
   const { coordinate, setCoordinate } = useContext(MovieContext);
   const imageUrl = getSmallImageUrlFromPath(imagePath);
@@ -28,7 +30,8 @@ export default function MovieItem({
         src={imageUrl}
         alt={alt}
         className={clsx(
-          "h-full max-w-[10rem] hover:scale-110 transition-transform",
+          "hover:scale-110 transition-transform object-cover",
+          isPoster ? "w-[8.25rem] h-[12rem]" : "w-[10rem] h-[6rem]",
           active && "brightness-50",
         )}
       />

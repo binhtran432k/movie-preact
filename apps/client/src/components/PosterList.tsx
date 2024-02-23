@@ -4,7 +4,7 @@ import MovieItem from "./MovieItem";
 export default function PosterList({ movies }: { movies: Movie[] }) {
   return (
     <div className="container mx-auto">
-      <div className="scrollbar-transparent px-3 pt-8 pb-6 flex gap-2 h-[16rem] overflow-x-auto">
+      <div className="scrollbar-transparent px-3 pt-8 pb-6 flex items-start gap-2 overflow-x-auto">
         {movies.map(
           (movie, i) =>
             movie.poster_path && (
@@ -13,7 +13,8 @@ export default function PosterList({ movies }: { movies: Movie[] }) {
                 y={i}
                 key={movie.id}
                 imagePath={movie.poster_path}
-                alt={movie.name ?? "Movie Name"}
+                alt={movie.title ?? movie.name ?? "Movie Name"}
+                isPoster
               />
             ),
         )}
