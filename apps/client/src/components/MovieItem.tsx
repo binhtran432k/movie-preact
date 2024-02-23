@@ -1,4 +1,4 @@
-import { getImageUrlFromPath } from "@/utils/api";
+import { getSmallImageUrlFromPath } from "@/utils/api";
 import clsx from "clsx/lite";
 
 export default function MovieItem({
@@ -12,7 +12,7 @@ export default function MovieItem({
   active?: boolean;
   onClick: (active: boolean) => void;
 }) {
-  const imageUrl = getImageUrlFromPath(imagePath);
+  const imageUrl = getSmallImageUrlFromPath(imagePath);
   return (
     <button
       type="button"

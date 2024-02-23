@@ -9,6 +9,14 @@ export const api = axios.create({
   },
 });
 
-export function getImageUrlFromPath(path: string) {
-  return `${API_URL_IMAGE}${path}`;
+export function getImageUrlFromPathWithSize(path: string, size: string) {
+  return `${API_URL_IMAGE}/${size}${path}`;
+}
+
+export function getSmallImageUrlFromPath(path: string) {
+  return getImageUrlFromPathWithSize(path, "w154");
+}
+
+export function getBannerUrlFromPath(path: string) {
+  return getImageUrlFromPathWithSize(path, "w1280");
 }
