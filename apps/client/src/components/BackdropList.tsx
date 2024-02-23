@@ -20,7 +20,7 @@ export default function BackdropList({
   return (
     <div className="container mx-auto mt-12">
       <h3 className="px-1 font-bold text-xl">{title}</h3>
-      <div className="scrollbar-transparent px-3 py-4 flex gap-3 h-[8rem] overflow-x-auto">
+      <div className="scrollbar-transparent px-3 py-4 flex items-start gap-3 overflow-x-auto">
         {movies.map(
           (movie, i) =>
             movie.backdrop_path && (
