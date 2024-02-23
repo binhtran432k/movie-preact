@@ -8,14 +8,9 @@ export default function PosterList({ movies }: { movies: Movie[] }) {
         {movies.map(
           (movie, i) =>
             movie.poster_path && (
-              <MovieItem
-                x={0}
-                y={i}
-                key={movie.id}
-                imagePath={movie.poster_path}
-                alt={movie.title ?? movie.name ?? "Movie Name"}
-                isPoster
-              />
+              <div className="shrink-0">
+                <MovieItem x={0} y={i} key={movie.id} movie={movie} isPoster />
+              </div>
             ),
         )}
       </div>

@@ -23,7 +23,7 @@ const MovieDetail = memo(({ movie }: { movie: Movie }) => {
 
   return (
     <article className="flex flex-col md:flex-row">
-      <div className="p-4">
+      <div className="p-4 max-h-[25rem] overflow-auto grow">
         <h3 className="text-2xl font-bold pb-4 border-gray-200 border-b-2">
           {movieName}
         </h3>
@@ -34,7 +34,7 @@ const MovieDetail = memo(({ movie }: { movie: Movie }) => {
         <p className="text-sm">{movie.overview}</p>
       </div>
       {video && (
-        <div className="md:w-1/2 shrink-0 md:h-[25rem]">
+        <div className="md:w-1/2 h-[18rem] md:h-[25rem] shrink-0 p-2">
           <iframe
             title={movieName}
             src={`https://www.youtube.com/embed/${video.key}`}
