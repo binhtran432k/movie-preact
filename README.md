@@ -29,6 +29,9 @@ commit message conventions.
 - Clean and intuitive interface powered by Tailwind CSS
 - Experience lightning-fast browsing and searching thanks to Preact and
   Million's performance optimizations
+- Trending Spotlight - Personalized Movie Browsing
+- Movie Details & Trailers
+- Search for specific movies with detailed info and cast listings
 
 ## Technology Stack
 
