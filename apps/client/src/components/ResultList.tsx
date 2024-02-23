@@ -9,6 +9,9 @@ import MovieItemWithDetail from "./MovieItemWithDetail";
 const CachedMovies = memo(({ movies }: { movies: Movie[] }) => {
   return (
     <div className="relative p-4 flex flex-wrap gap-2 items-start justify-center">
+      {movies.length === 0 && (
+        <h4 className="w-full text-center text-2xl">No Results Found</h4>
+      )}
       {movies.map(
         (movie, i) =>
           movie.poster_path && (
