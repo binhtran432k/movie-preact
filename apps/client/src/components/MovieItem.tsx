@@ -1,22 +1,27 @@
+import { MovieContext } from "@/store/MovieProvider";
 import { getSmallImageUrlFromPath } from "@/utils/api";
 import clsx from "clsx/lite";
+import { useContext } from "preact/hooks";
 
 export default function MovieItem({
+  x,
+  y,
   imagePath,
   alt,
-  active,
-  onClick,
 }: {
+  x: number;
+  y: number;
   imagePath: string;
   alt: string;
-  active?: boolean;
-  onClick: (active: boolean) => void;
 }) {
+  const { coordinate, setCoordinate } = useContext(MovieContext);
   const imageUrl = getSmallImageUrlFromPath(imagePath);
+  const active = coordinate.x === x && coordinate.y === y;
+
   return (
     <button
       type="button"
-      onClick={() => onClick(Boolean(active))}
+      onClick={() => (active ? setCoordinate(-1, -1) : setCoordinate(x, y))}
       className="shrink-0"
     >
       <img

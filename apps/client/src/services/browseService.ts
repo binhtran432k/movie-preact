@@ -1,5 +1,5 @@
 import { api } from "@/utils/api";
-import { Movie, Page } from "@/utils/definitions";
+import { Movie, MovieVideo, Page } from "@/utils/definitions";
 
 export async function fetchTrendingMovies() {
   return api.get<Page<Movie>>("/trending/all/week", {
@@ -63,4 +63,8 @@ export async function fetchDiscoverMovies() {
       with_network: 123,
     },
   });
+}
+
+export async function fetchMovieDetail(movieId: number) {
+  return await api.get<Page<MovieVideo>>(`/movie/${movieId}/videos`);
 }

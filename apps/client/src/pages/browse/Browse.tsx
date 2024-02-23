@@ -1,7 +1,7 @@
 import BackdropList from "@/components/BackdropList";
-import Banner from "@/components/Banner";
 import Navbar from "@/components/NavBar";
 import PosterList from "@/components/PosterList";
+import RandomBanner from "@/components/RandomBanner";
 import {
   fetchActionMovies,
   fetchComedyMovies,
@@ -12,15 +12,66 @@ import {
   fetchTopRated,
   fetchTrendingMovies,
 } from "@/services/browseService";
+import { MovieProvider } from "@/store/MovieProvider";
 import { Movie, Page } from "@/utils/definitions";
 import { AxiosResponse } from "axios";
-import { StateUpdater, useEffect, useMemo, useState } from "preact/hooks";
+import { memo } from "preact/compat";
+import { StateUpdater, useEffect, useState } from "preact/hooks";
 
-function getRandomIdx(n: number) {
-  return Math.floor(Math.random() * n);
-}
+const Browse = memo(() => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [trending, setTrendingMovies] = useState<Movie[]>([]);
+  const [topRated, setTopRated] = useState<Movie[]>([]);
+  const [actionMovies, setActionMovies] = useState<Movie[]>([]);
+  const [comedyMovies, setComedyMovies] = useState<Movie[]>([]);
+  const [horrorMovies, setHorrorMovies] = useState<Movie[]>([]);
+  const [romanceMovies, setRomanceMovies] = useState<Movie[]>([]);
+  const [documentaries, setDocumentaries] = useState<Movie[]>([]);
 
-function fetchMovie(
+  useEffect(() => {
+    // Get Movies and store it to state in asynchronous
+    fetchMovies(fetchDiscoverMovies, setMovies);
+    fetchMovies(fetchTrendingMovies, setTrendingMovies);
+    fetchMovies(fetchTopRated, setTopRated);
+    fetchMovies(fetchActionMovies, setActionMovies);
+    fetchMovies(fetchComedyMovies, setComedyMovies);
+    fetchMovies(fetchHorrorMovies, setHorrorMovies);
+    fetchMovies(fetchRomanceMovies, setRomanceMovies);
+    fetchMovies(fetchDocumentaries, setDocumentaries);
+  }, []);
+
+  const moviesByType: Array<[string, Movie[]]> = [
+    ["Trending", trending],
+    ["Top Rated", topRated],
+    ["Action Movies", actionMovies],
+    ["Comedy Movies", comedyMovies],
+    ["Horror Movies", horrorMovies],
+    ["Romance Movies", romanceMovies],
+    ["Documentaries", documentaries],
+  ];
+
+  // There are 2 MovieProvider here
+  // The first one is used for Poster List to store the position of poster in one row (x = 0)
+  // The second one is used for Backdrop List to store the position of backdrop with:
+  // - The Type of movie is used as x
+  // - The Movie for each type is used as y
+  return (
+    <div className="mb-16">
+      <Navbar />
+      <MovieProvider>
+        <RandomBanner movies={movies} />
+        <PosterList movies={movies} />
+      </MovieProvider>
+      <MovieProvider>
+        {moviesByType.map(([title, movies], i) => (
+          <BackdropList x={i} title={title} movies={movies} />
+        ))}
+      </MovieProvider>
+    </div>
+  );
+});
+
+function fetchMovies(
   fetchFunc: () => Promise<AxiosResponse<Page<Movie>>>,
   setFunc: StateUpdater<Movie[]>,
 ) {
@@ -33,48 +84,4 @@ function fetchMovie(
     });
 }
 
-export default function Browse() {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [trending, setTrendingMovies] = useState<Movie[]>([]);
-  const [topRated, setTopRated] = useState<Movie[]>([]);
-  const [actionMovies, setActionMovies] = useState<Movie[]>([]);
-  const [comedyMovies, setComedyMovies] = useState<Movie[]>([]);
-  const [horrorMovies, setHorrorMovies] = useState<Movie[]>([]);
-  const [romanceMovies, setRomanceMovies] = useState<Movie[]>([]);
-  const [documentaries, setDocumentaries] = useState<Movie[]>([]);
-  const [idx, setIdx] = useState(-1);
-  const randomIdx = useMemo(() => getRandomIdx(movies.length), [movies.length]);
-
-  useEffect(() => {
-    // Get Movies and store it to state
-    fetchMovie(fetchDiscoverMovies, setMovies);
-    fetchMovie(fetchTrendingMovies, setTrendingMovies);
-    fetchMovie(fetchTopRated, setTopRated);
-    fetchMovie(fetchActionMovies, setActionMovies);
-    fetchMovie(fetchComedyMovies, setComedyMovies);
-    fetchMovie(fetchHorrorMovies, setHorrorMovies);
-    fetchMovie(fetchRomanceMovies, setRomanceMovies);
-    fetchMovie(fetchDocumentaries, setDocumentaries);
-  }, []);
-
-  const movie = movies[idx !== -1 ? idx : randomIdx];
-
-  return (
-    <div className="mb-16">
-      <Navbar />
-      <Banner
-        imagePath={movie?.backdrop_path || movie?.poster_path}
-        name={movie?.name}
-        overview={movie?.overview}
-      />
-      <PosterList movies={movies} idx={idx} setIdx={setIdx} />
-      <BackdropList title="Trending" movies={trending} />
-      <BackdropList title="Top Rated" movies={topRated} />
-      <BackdropList title="Action Movies" movies={actionMovies} />
-      <BackdropList title="Comedy Movies" movies={comedyMovies} />
-      <BackdropList title="Horror Movies" movies={horrorMovies} />
-      <BackdropList title="Romance Movies" movies={romanceMovies} />
-      <BackdropList title="Documentaries" movies={documentaries} />
-    </div>
-  );
-}
+export default Browse;
