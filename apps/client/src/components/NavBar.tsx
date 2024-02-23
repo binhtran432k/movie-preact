@@ -14,7 +14,7 @@ const NavBar = memo(() => {
       className={clsx(
         // Change background to black when scroll top bigger than 100px
         scrollTop > 100 && "bg-black",
-        "fixed w-full transition-colors duration-500 z-10",
+        "fixed w-full transition-colors duration-500 z-10 top-0",
       )}
     >
       <div className="container mx-auto px-3 py-1 flex justify-between">
