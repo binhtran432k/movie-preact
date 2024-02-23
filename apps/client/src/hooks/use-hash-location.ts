@@ -7,6 +7,7 @@ function hashLocation() {
 function navigate(to: string, { state = null } = {}) {
   const [newHash, search] = `#/${to.replace(/^#?\/?/, "")}`.split("?");
   const newSearch = search ? `?${search}` : "";
+  location.hash = newHash;
   history.replaceState(state, "", `${location.pathname}${newSearch}${newHash}`);
 }
 
