@@ -1,4 +1,4 @@
-import { getImageUrlFromPath } from "@/utils/api";
+import { getBannerUrlFromPath } from "@/utils/api";
 import { truncateString } from "@/utils/string";
 import clsx from "clsx/lite";
 import { memo } from "preact/compat";
@@ -42,7 +42,7 @@ const Banner = memo(
 );
 
 function getImagePropertyValue(imagePath: string) {
-  return `linear-gradient(${BACKDROP_COLOR}, ${BACKDROP_COLOR}), url('${getImageUrlFromPath(
+  return `linear-gradient(${BACKDROP_COLOR}, ${BACKDROP_COLOR}), url('${getBannerUrlFromPath(
     imagePath,
   )}')`;
 }
