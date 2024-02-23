@@ -1,14 +1,38 @@
 import { searchMovies } from "@/services/searchService";
+import { MovieContext } from "@/store/MovieProvider";
 import { SearchContext } from "@/store/SearchProvider";
 import { Movie } from "@/utils/definitions";
 import { memo, useContext, useEffect, useState } from "preact/compat";
-import MovieItem from "./MovieItem";
+import MovieItemWithDetail from "./MovieItemWithDetail";
 
-const ResultList = memo(() => {
+// This component is used to avoid rerender movies when typing
+const CachedMovies = memo(({ movies }: { movies: Movie[] }) => {
+  return (
+    <div className="relative p-4 flex flex-wrap gap-2 items-start justify-center">
+      {movies.map(
+        (movie, i) =>
+          movie.poster_path && (
+            <MovieItemWithDetail x={0} y={i} movie={movie} isPoster />
+          ),
+      )}
+      {
+        // Fake items to apply left align to last items
+        [...Array(10)].map(() => (
+          <div className="w-[8.25rem]" />
+        ))
+      }
+    </div>
+  );
+});
+
+export default function ResultList() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const { value } = useContext(SearchContext);
+  const { setCoordinate } = useContext(MovieContext);
+
   useEffect(() => {
     const debounceId = setTimeout(() => {
+      setCoordinate(-1, -1);
       if (value) {
         searchMovies(value)
           .then((res) => {
@@ -27,22 +51,7 @@ const ResultList = memo(() => {
   return (
     <section>
       <h3 className="text-lg font-bold">Search Result</h3>
-      <div className="p-4 flex flex-wrap gap-2 items-start">
-        {movies.map(
-          (movie, i) =>
-            movie.poster_path && (
-              <MovieItem
-                x={0}
-                y={i}
-                imagePath={movie.poster_path}
-                alt={movie.title ?? movie.name ?? "Movie Name"}
-                isPoster
-              />
-            ),
-        )}
-      </div>
+      <CachedMovies movies={movies} />
     </section>
   );
-});
-
-export default ResultList;
+}

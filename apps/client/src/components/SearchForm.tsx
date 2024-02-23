@@ -1,16 +1,25 @@
 import { SearchContext } from "@/store/SearchProvider";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/16/solid";
-import { memo, useContext } from "preact/compat";
+import { ChangeEvent, useCallback, useContext } from "preact/compat";
 
-const SearchForm = memo(() => {
+export default function SearchForm() {
   const { value, setValue } = useContext(SearchContext);
-  const handleSubmit = (e: SubmitEvent) => {
+
+  const handleSubmit = useCallback((e: SubmitEvent) => {
     e.preventDefault();
-  };
+  }, []);
+
+  const handleReset = useCallback(() => setValue(""), []);
+
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => setValue(e.currentTarget.value),
+    [],
+  );
+
   return (
     <form
       onSubmit={handleSubmit}
-      onReset={() => setValue("")}
+      onReset={handleReset}
       className="flex relative h-10 w-full"
     >
       <button
@@ -22,7 +31,7 @@ const SearchForm = memo(() => {
       <input
         type="search"
         value={value}
-        onChange={(e) => setValue(e.currentTarget.value)}
+        onChange={handleChange}
         className="bg-black border border-gray-300 rounded-sm grow px-6"
       />
       {value && (
@@ -35,6 +44,4 @@ const SearchForm = memo(() => {
       )}
     </form>
   );
-});
-
-export default SearchForm;
+}

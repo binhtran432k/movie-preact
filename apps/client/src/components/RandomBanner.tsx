@@ -6,8 +6,8 @@ import Banner from "./Banner";
 export default function RandomBanner({ movies }: { movies: Movie[] }) {
   const { coordinate } = useContext(MovieContext);
   const randomIdx = useMemo(() => getRandomIdx(movies.length), [movies.length]);
-
   const movie = movies[coordinate.y !== -1 ? coordinate.y : randomIdx];
+
   return (
     <Banner
       imagePath={movie?.backdrop_path || movie?.poster_path}
